@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>URL to PDF</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 720px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      form {
+        display: flex;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      input[type="url"] {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+      }
+      button {
+        padding: 10px 16px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .error {
+        color: #b00020;
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Convert a URL to PDF</h1>
+    <p>Enter a full URL and download a PDF of the entire page.</p>
+    <form action="/pdf" method="post">
+      <input
+        type="url"
+        name="url"
+        placeholder="https://example.com"
+        required
+        value="{{ url or '' }}"
+      />
+      <button type="submit">Create PDF</button>
+    </form>
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+  </body>
+</html>
